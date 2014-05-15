@@ -1,0 +1,16 @@
+[
+{
+  "modid": "fisharmor",
+  "name": "Fish Armor",
+  "description": "A mod that adds fish armor to Minecraft. Based entirely on an inside joke from ProfMobius' patreon server.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["ExampleDude"],
+  "credits": "Mr. Byte",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
