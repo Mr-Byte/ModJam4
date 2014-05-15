@@ -20,9 +20,13 @@ import cpw.mods.fml.common.Mod
 import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 
-@Mod(name = "FishArmor", modid="fisharmor", version="1.0.0-1.7.2", modLanguage = "scala")
+@Mod(name = FishArmorMod.MOD_NAME, modid=FishArmorMod.MOD_ID, version=FishArmorMod.MOD_VERSION, modLanguage = "scala")
 object FishArmorMod
 {
+    final val MOD_NAME = "FishArmor"
+    final val MOD_ID = "fisharmor"
+    final val MOD_VERSION = "1.0.0-1.7.2"
+
     @EventHandler
     def preInit(event: FMLPreInitializationEvent) = {}
 
