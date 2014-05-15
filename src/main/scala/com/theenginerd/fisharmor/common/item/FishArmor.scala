@@ -16,9 +16,22 @@
 
 package com.theenginerd.fisharmor.common.item
 
-import net.minecraft.item.ItemArmor
+import net.minecraft.item.{ItemStack, ItemArmor}
+import net.minecraftforge.common.ISpecialArmor
+import net.minecraft.item.ItemArmor.ArmorMaterial
+import net.minecraft.entity.EntityLivingBase
+import net.minecraft.util.DamageSource
+import net.minecraftforge.common.ISpecialArmor.ArmorProperties
+import net.minecraft.entity.player.EntityPlayer
 
-class FishArmor extends ItemArmor
+//TODO: replace this int with a case class?
+class FishArmor(armorPart: Int)
+    extends ItemArmor(ArmorMaterial.CHAIN, 0, armorPart)
+    with ISpecialArmor
 {
+    override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ArmorProperties = ???
 
+    override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int = ???
+
+    override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int): Unit = ???
 }
