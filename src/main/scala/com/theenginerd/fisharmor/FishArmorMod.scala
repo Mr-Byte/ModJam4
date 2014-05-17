@@ -19,6 +19,8 @@ package com.theenginerd.fisharmor
 import cpw.mods.fml.common.Mod
 import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.registry.GameRegistry
+import com.theenginerd.fisharmor.common.item.{FishBoots, FishLeggings, FishChestplate, FishHelmet}
 
 @Mod(name = FishArmorMod.MOD_NAME, modid=FishArmorMod.MOD_ID, version=FishArmorMod.MOD_VERSION, modLanguage = "scala")
 object FishArmorMod
@@ -28,7 +30,13 @@ object FishArmorMod
     final val MOD_VERSION = "1.0.0-1.7.2"
 
     @EventHandler
-    def preInit(event: FMLPreInitializationEvent) = {}
+    def preInit(event: FMLPreInitializationEvent) =
+    {
+        GameRegistry.registerItem(FishHelmet, FishHelmet.getUnlocalizedName.replace(".name", ""))
+        GameRegistry.registerItem(FishChestplate, FishChestplate.getUnlocalizedName.replace(".name", ""))
+        GameRegistry.registerItem(FishLeggings, FishLeggings.getUnlocalizedName.replace(".name", ""))
+        GameRegistry.registerItem(FishBoots, FishBoots.getUnlocalizedName.replace(".name", ""))
+    }
 
     @EventHandler
     def init(event: FMLInitializationEvent) = {}

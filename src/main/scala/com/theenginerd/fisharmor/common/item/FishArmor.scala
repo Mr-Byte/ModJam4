@@ -18,20 +18,49 @@ package com.theenginerd.fisharmor.common.item
 
 import net.minecraft.item.{ItemStack, ItemArmor}
 import net.minecraftforge.common.ISpecialArmor
-import net.minecraft.item.ItemArmor.ArmorMaterial
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.util.DamageSource
 import net.minecraftforge.common.ISpecialArmor.ArmorProperties
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraftforge.common.util.EnumHelper
+import net.minecraft.creativetab.CreativeTabs
 
-//TODO: replace this int with a case class?
-class FishArmor(armorPart: Int)
-    extends ItemArmor(ArmorMaterial.CHAIN, 0, armorPart)
-    with ISpecialArmor
+
+
+class FishArmor(armorPart: ArmorPart)
+    extends ItemArmor(FishArmor.FISH_ARMOR_MATERIAL, 0, armorPart.ID)
 {
-    override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ArmorProperties = ???
+    setCreativeTab(CreativeTabs.tabCombat)
 
-    override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int = ???
+    //TODO: Figure out I need this interface.  Maybe fish armor can do cool stuff, who knows?
+//    override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ArmorProperties = ???
+//
+//    override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int = ???
+//
+//    override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int): Unit = ???
+}
 
-    override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int): Unit = ???
+object FishArmor
+{
+    final val FISH_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("FishArmor", 15, Array(3, 5, 4, 3), 20)
+}
+
+object FishHelmet extends FishArmor(HelmetPart)
+{
+    setUnlocalizedName("fishHelmet")
+}
+
+object FishChestplate extends FishArmor(ChestplatePart)
+{
+    setUnlocalizedName("fishChestplate")
+}
+
+object FishLeggings extends FishArmor(LeggingsPart)
+{
+    setUnlocalizedName("fishLeggings")
+}
+
+object FishBoots extends FishArmor(BootsPart)
+{
+    setUnlocalizedName("fishBoots")
 }
