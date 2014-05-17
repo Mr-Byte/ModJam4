@@ -16,7 +16,23 @@
 
 package com.theenginerd.fisharmor.common.item
 
-sealed abstract class ArmorPart { val ID: Integer }
+sealed abstract class ArmorPart
+{
+    val ID: Integer
+
+    def getArmorPartName =
+    {
+        this match
+        {
+            case HelmetPart => "helmet"
+            case ChestplatePart => "chestplate"
+            case LeggingsPart => "leggings"
+            case BootsPart => "boots"
+        }
+    }
+}
+
+
 case object HelmetPart extends ArmorPart { override val ID: Integer = 0 }
 case object ChestplatePart extends ArmorPart { override val ID: Integer = 1 }
 case object LeggingsPart extends ArmorPart { override val ID: Integer = 2 }

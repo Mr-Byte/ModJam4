@@ -17,27 +17,31 @@
 package com.theenginerd.fisharmor.common.item
 
 import net.minecraft.item.{ItemStack, ItemArmor}
-import net.minecraftforge.common.ISpecialArmor
-import net.minecraft.entity.EntityLivingBase
-import net.minecraft.util.DamageSource
-import net.minecraftforge.common.ISpecialArmor.ArmorProperties
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.common.util.EnumHelper
 import net.minecraft.creativetab.CreativeTabs
-
+import cpw.mods.fml.relauncher.{SideOnly, Side}
+import net.minecraft.client.renderer.texture.IIconRegister
+import net.minecraft.entity.Entity
 
 
 class FishArmor(armorPart: ArmorPart)
     extends ItemArmor(FishArmor.FISH_ARMOR_MATERIAL, 0, armorPart.ID)
 {
     setCreativeTab(CreativeTabs.tabCombat)
+    setTextureName("fisharmor_" + armorPart.getArmorPartName)
+    @SideOnly(Side.CLIENT)
+    override def registerIcons(iconRegister: IIconRegister) =
+    {
+        val armorPartName = armorPart.getArmorPartName
+        itemIcon = iconRegister.registerIcon(s"fisharmor:armor/fish_$armorPartName")
+    }
 
-    //TODO: Figure out I need this interface.  Maybe fish armor can do cool stuff, who knows?
-//    override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ArmorProperties = ???
+//    override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, layer: String) =
+//    {
+//        val suffix = if(armorType == 2) 2 else 1
 //
-//    override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int = ???
-//
-//    override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int): Unit = ???
+//        s"fisharmor:textures/armor/fisharmor_layer_$suffix.png"
+//    }
 }
 
 object FishArmor
